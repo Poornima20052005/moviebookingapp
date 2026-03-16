@@ -1,0 +1,27 @@
+services:
+  # Backend (Django API)
+  - type: web
+    name: moviebooking-backend
+    env: python
+    region: oregon
+    buildCommand: cd backend && pip install -r requirements.txt
+    startCommand: cd backend && gunicorn moviebooking.wsgi --log-file - --bind 0.0.0.0:$PORT
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        value: django-insecure-movie-booking-app-secret-key-change-in-production
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: "moviebooking-backend.onrender.com"
+
+  # Frontend (React Static Site)
+  - type: static
+    name: moviebooking-frontend
+    region: oregon
+    buildCommand: cd frontend && npm install && npm run build
+    publishDir: frontend/build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://moviebooking-backend.onrender.com/api
