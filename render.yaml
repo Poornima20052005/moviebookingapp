@@ -15,3 +15,5 @@ services:
         value: "False"
       - key: ALLOWED_HOSTS
         value: "moviebooking-backend.onrender.com"
+      - key: DISABLE_COLLECTSTATIC
+        value: "1"
