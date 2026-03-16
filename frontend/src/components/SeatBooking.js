@@ -41,6 +41,7 @@ const SeatBooking = () => {
   }, [showtimeId, selectedShowtime]);
 
   // Generate some random booked seats for demo
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (showtime) {
       const randomBooked = [];

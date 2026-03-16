@@ -5,7 +5,7 @@ import { useBooking } from '../context/BookingContext';
 
 const BookingConfirmation = () => {
   const { bookingId } = useParams();
-  const { clearBooking, selectedMovie, selectedShowtime, selectedSeats } = useBooking();
+  const { clearBooking } = useBooking();
   
   const [booking, setBooking] = useState(null);
   const [loading, setLoading] = useState(true);
