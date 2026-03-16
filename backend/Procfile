@@ -1,1 +1,1 @@
-web: sh -c "python manage.py migrate && python manage.py seed_data && gunicorn moviebooking.wsgi --log-file - --bind 0.0.0.0:$PORT"
+web: gunicorn moviebooking.wsgi --log-file - --bind 0.0.0.0:$PORT
