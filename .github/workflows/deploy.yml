@@ -1,0 +1,21 @@
+name: Deploy to Render
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to Render (Backend)
+        uses: RenderDevops/deploy-action@v1
+        with:
+          render-service-name: ${{ secrets.RENDER_SERVICE_NAME }}
+          render-api-key: ${{ secrets.RENDER_API_KEY }}
+          render-repo: https://github.com/Poornima20052005/moviebookingapp
