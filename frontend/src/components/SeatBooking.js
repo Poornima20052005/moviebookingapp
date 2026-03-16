@@ -53,7 +53,7 @@ const SeatBooking = () => {
       }
       setBookedSeats(randomBooked);
     }
-  }, [showtime]);
+  }, [showtime, rowLabels, rows, seatsPerRow]);
 
   const toggleSeat = (seatNumber) => {
     if (bookedSeats.includes(seatNumber)) return;
