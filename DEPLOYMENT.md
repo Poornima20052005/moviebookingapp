@@ -1,71 +1,41 @@
-# Deploy Movie Booking App to Render.com
+# Manual Deployment Guide
 
-## Step 1: Go to Render Dashboard
-- Open https://dashboard.render.com in your browser
+## PART 1: Deploy Backend to Render (Manual)
 
-## Step 2: Sign Up/Login
-- Click "Sign Up" (or "Log In" if you have an account)
-- Choose "Continue with GitHub" to sign up with your GitHub account
+1. Go to https://dashboard.render.com
+2. Click "New" in top right → Select **"Web Service"**
+3. Connect your GitHub: `Poornima20052005/moviebookingapp`
+4. Configure:
+   - Name: `moviebooking-backend`
+   - Root Directory: `backend`
+   - Environment: `Python 3`
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `gunicorn moviebooking.wsgi --log-file - --bind 0.0.0.0:$PORT`
+5. Click "Deploy Web Service"
+6. Wait 5 minutes - you'll get URL like: `https://moviebooking-backend.onrender.com`
 
-## Step 3: Access Blueprints
-- In the left sidebar, look for **"Blueprints"** (or go directly to: https://dashboard.render.com/blueprints)
-- Click the **"+ New Blueprint Instance"** button (blue button)
-
-## Step 4: Connect GitHub Repository
-- Click "Add Repository Access"
-- Find and select: `Poornima20052005/moviebookingapp`
-- Click "Add Repository"
-
-## Step 5: Deploy Backend
-- After adding repository, it will show the render.yaml configuration
-- You should see one service: `moviebooking-backend` (Web Service - Python)
-- Scroll down and click **"Apply Free Blueprint"**
-
-## Step 6: Wait for Backend Deployment
-- Wait 5-10 minutes for build and deploy
-- Once complete, you'll see green "Live" status
-
-## Step 7: Get Your Backend URL
-- Backend API: `https://moviebooking-backend.onrender.com`
-- Note this URL for the next step
-
-## Step 8: Deploy Frontend to Vercel (Easier!)
-Instead of deploying frontend to Render, use Vercel (it's free and easier):
+## PART 2: Deploy Frontend to Vercel (Manual)
 
 1. Go to https://vercel.com
 2. Sign up with GitHub
 3. Click "Add New..." → "Project"
-4. Select `Poornima20052005/moviebookingapp`
-5. Under "Build and Output Settings":
-   - Framework Preset: Select "Create React App"
-   - Build Command: `npm run build` (or leave blank)
-   - Output Directory: `frontend/build` (or leave blank)
-6. Under "Environment Variables":
-   - Add: `REACT_APP_API_URL` = `https://moviebooking-backend.onrender.com/api`
+4. Select: `Poornima20052005/moviebookingapp`
+5. Configure:
+   - Framework Preset: **Other**
+   - Build Command: `cd frontend && npm install && npm run build`
+   - Output Directory: `frontend/build`
+6. Add Environment Variable (before deploy):
+   - Key: `REACT_APP_API_URL`
+   - Value: `https://moviebooking-backend.onrender.com/api` (use YOUR backend URL)
 7. Click "Deploy"
 
-## Step 9: Your Live URLs!
+## PART 3: Update Frontend API URL
+
+After backend deploys, update the API URL in Vercel:
+- Go to your Vercel project → Settings → Environment Variables
+- Make sure `REACT_APP_API_URL` = `https://moviebooking-backend.onrender.com/api`
+
+## Your Final URLs (Free):
+
 - Backend API: `https://moviebooking-backend.onrender.com`
-- Frontend: `https://your-project.vercel.app`
-
-## Alternative: Manual Render Deployment
-
-If you prefer to deploy everything to Render:
-
-### Backend:
-1. Click "New" → "Web Service"
-2. Connect to `Poornima20052005/moviebookingapp`
-3. Set:
-   - Root Directory: `backend`
-   - Build Command: `pip install -r requirements.txt`
-   - Start Command: `gunicorn moviebooking.wsgi --log-file - --bind 0.0.0.0:$PORT`
-
-### Frontend:
-1. Click "New" → "Web Service" (not Static Site - it has issues)
-2. Connect to `Poornima20052005/moviebookingapp`
-3. Set:
-   - Root Directory: `frontend`
-   - Build Command: `npm install && npm run build`
-   - Start Command: `npx serve -s build -l $PORT`
-4. Add Environment Variable:
-   - `REACT_APP_API_URL` = `https://your-backend-service.onrender.com/api`
+- Frontend: `https://your-project-name.vercel.app`
