@@ -1,30 +1,25 @@
-# Vercel Deployment Settings
+# Vercel Deployment Settings (FIXED)
 
-## Fill in these fields in Vercel:
+The frontend is in the `frontend/` subfolder, so you need to use:
 
-### Project Settings:
+## Settings:
 
-1. **Framework Preset**: Other
+1. **Framework Preset**: "Other"
 
-2. **Build Command**: 
+2. **Build Command** (click Override):
 ```
 cd frontend && npm install && npm run build
 ```
 
-3. **Output Directory**: 
+3. **Output Directory** (click Override):
 ```
 frontend/build
 ```
 
-4. **Environment Variables** (click "Add"):
+4. **Environment Variable**:
    - Key: `REACT_APP_API_URL`
    - Value: `https://moviebooking-backend.onrender.com/api`
 
-### Important:
-- After entering the Build Command and Output Directory, make sure to click the toggle for "Override" next to each if they appear
-- Then click "Deploy"
-
-## If you see different fields:
-- If Build Command field says "What build command do you want to use?" → type: `cd frontend && npm install && npm run build`
-- If Output Directory field says "What is the output directory?" → type: `frontend/build`
-- If Framework Preset asks to select → choose "Other"
+## Important:
+- Make sure to include `cd frontend` in the build command!
+- The Output Directory should be `frontend/build` (not just `build`)
