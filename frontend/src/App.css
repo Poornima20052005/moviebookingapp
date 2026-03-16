@@ -1,0 +1,420 @@
+/* App Styles */
+.app {
+  min-height: 100vh;
+}
+
+.app-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.app-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Movie List Styles */
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.movie-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.movie-poster {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  background: #e0e0e0;
+}
+
+.movie-info {
+  padding: 1.5rem;
+}
+
+.movie-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.movie-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.movie-genre {
+  display: inline-block;
+  background: #667eea;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.movie-description {
+  color: #777;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Showtime Selection Styles */
+.showtime-selection {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #667eea;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
+
+.showtime-header {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.date-list {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.date-card {
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+.date-card:hover,
+.date-card.active {
+  border-color: #667eea;
+  background: #f5f3ff;
+}
+
+.date-card .day {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.date-card .date {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.showtime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.showtime-card {
+  background: white;
+  padding: 1.25rem;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid #e0e0e0;
+  transition: all 0.2s ease;
+}
+
+.showtime-card:hover:not(.disabled) {
+  border-color: #667eea;
+  transform: scale(1.02);
+}
+
+.showtime-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.showtime-card .time {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.showtime-card .price {
+  color: #667eea;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.showtime-card .seats {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.25rem;
+}
+
+/* Seat Booking Styles */
+.seat-booking {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.seat-booking-header {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.screen {
+  background: linear-gradient(180deg, #e0e0e0 0%, #c0c0c0 100%);
+  height: 30px;
+  border-radius: 50%;
+  margin: 2rem auto;
+  width: 80%;
+  text-align: center;
+  padding-top: 8px;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.seat-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 2rem 0;
+}
+
+.seat-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.seat {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px 8px 12px 12px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  background: #e0e0e0;
+  color: #666;
+}
+
+.seat:hover:not(.booked):not(.selected) {
+  transform: scale(1.1);
+}
+
+.seat.selected {
+  background: #667eea;
+  color: white;
+}
+
+.seat.booked {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.seat-row-label {
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #666;
+}
+
+.booking-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.booking-summary {
+  background: #f5f3ff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.booking-summary h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.booking-summary p {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+.book-button {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.book-button:hover {
+  transform: scale(1.02);
+}
+
+.book-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Booking Confirmation Styles */
+.booking-confirmation {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.confirmation-card {
+  background: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.success-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.confirmation-card h2 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.confirmation-card p {
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.booking-details {
+  background: #f5f3ff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.booking-details h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.booking-details p {
+  margin: 0.5rem 0;
+}
+
+.home-button {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: #667eea;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.home-button:hover {
+  transform: scale(1.05);
+}
+
+/* Loading and Error States */
+.loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.error {
+  text-align: center;
+  padding: 3rem;
+  color: #e74c3c;
+}
+
+.no-showtimes {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
