@@ -15,3 +15,15 @@ services:
         value: "False"
       - key: ALLOWED_HOSTS
         value: "moviebooking-backend.onrender.com"
+
+  # Frontend (React)
+  - type: web
+    name: moviebooking-frontend
+    env: static
+    region: oregon
+    buildCommand: cd frontend && npm install && npm run build
+    publishDir: frontend/build
+    startCommand: npx serve -s frontend/build -l $PORT
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://moviebooking-backend.onrender.com/api
